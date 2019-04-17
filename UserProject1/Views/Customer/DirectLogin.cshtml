@@ -10,15 +10,15 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
-    ---- Include the above in your HEAD tag --------
+   
 <section class="login-block">
     <div class="container">
         <div class="row">
             <div class="col-md-4 login-sec">
                 <h2 class="text-center">Login Now</h2>
+            
                 <form id="loginform" class="form-horizontal" asp-action="DirectLogin" asp-controller="Customer" method="post" role="form">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                     <div class="form-group">
                         <label for="UserName" class="text-uppercase"><b>Username</b></label>
                         <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
@@ -32,12 +32,11 @@
                         <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
                             <a asp-controller="BookMovie" asp-action="DirectRegister" class="btn btn-lg btn-primary-btn-danger"><b>Sign Up Here</b></a>
                     </div>
-
-
+                    
+                        <p>@ViewBag.Error</p>
+                   
                     <div class="form-check">
-
                         <button type="submit" class="btn btn-login float-right">Submit</button>
-
                     </div>
                 </form>
 

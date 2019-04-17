@@ -12,7 +12,7 @@ namespace XUserSideTestingProject
     public class TestLocationController
     {
 
-        LocationController controller;
+        //LocationController controller;
 
         private ProjectTestDataContext context;
         public static DbContextOptions<ProjectTestDataContext> dbContextOptions { get; set; }
@@ -26,20 +26,21 @@ namespace XUserSideTestingProject
         public TestLocationController()
         {
             context = new ProjectTestDataContext(dbContextOptions);
-            controller = new LocationController();
+            //controller = new LocationController();
         }
 
 
-        [Fact]
-        [Trait("Location", "Index")]
-        public void Test1()
-        {
-            //Act
-            IActionResult result = controller.Index();
-            //Assert
-            Assert.NotNull(result);
+        //[Fact]
+        //[Trait("Location", "Index")]
+        //public void Test1()
+        //{
+        //    //Act
+        //    IActionResult result = controller.Index();
+        //    //Assert
+        //    Assert.NotNull(result);
 
-        }
+        //}
+
 
 
 

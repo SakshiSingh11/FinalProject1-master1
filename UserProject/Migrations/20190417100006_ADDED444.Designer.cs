@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserProject.Models;
 
 namespace AdminProject.Migrations
 {
     [DbContext(typeof(FinalProjectDataDbContext))]
-    partial class FinalProjectDataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190417100006_ADDED444")]
+    partial class ADDED444
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

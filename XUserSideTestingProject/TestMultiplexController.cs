@@ -13,12 +13,12 @@ namespace XUserSideTestingProject
     {
         
 
-            MultiplexController controller;
+            //MultiplexController controller;
 
             private ProjectTestDataContext context;
             public static DbContextOptions<ProjectTestDataContext> dbContextOptions { get; set; }
 
-            public static string connectionString = "Data Source=TRD-507; Initial Catalog = a1; Integrated Security = true;";
+            public static string connectionString = "Data Source=TRD-505; Initial Catalog = a1; Integrated Security = true;";
             static TestMultiplexController()
             {
                 dbContextOptions = new DbContextOptionsBuilder<ProjectTestDataContext>().UseSqlServer(connectionString).Options;
@@ -27,7 +27,7 @@ namespace XUserSideTestingProject
             public TestMultiplexController()
             {
                 context = new ProjectTestDataContext(dbContextOptions);
-                controller = new MultiplexController();
+                //controller = new MultiplexController();
             }
 
 

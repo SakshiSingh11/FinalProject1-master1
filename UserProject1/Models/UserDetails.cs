@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace UserProject1.Models
 {
@@ -12,13 +11,9 @@ namespace UserProject1.Models
         }
 
         public int UserDetailId { get; set; }
-        [Required ]
         public string Email { get; set; }
-        [Required]
         public string Password { get; set; }
-        [Required]
         public long ContactNo { get; set; }
-        [Required]
         public string UserName { get; set; }
 
         public Reviews Reviews { get; set; }

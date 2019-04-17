@@ -32,7 +32,7 @@ namespace UserProject1.Controllers
             }
             else
             {
-                //ViewBag.Error = "Invalid Credentials";
+                ViewBag.Error = "Invalid Credentials";
                 return View("Index");
           
             }
@@ -45,17 +45,28 @@ namespace UserProject1.Controllers
         }
         [Route("DirectLogin")]
         [HttpPost]
-        public IActionResult DirectLogin([Bind("UserName", "Password")]string username, string password)
+        public IActionResult DirectLogin(/*[Bind("UserName", "Password")]*/string username, string password)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+
                 var user = context.UserDetails.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
-                HttpContext.Session.SetString("uid", (user.UserDetailId).ToString());
-                HttpContext.Session.SetString("uname", (user.UserName).ToString());
+                if (user == null)
+                {
+
+                    ViewBag.Error = "Invalid Credentials";
+                return View();
+                }
+                else
+                {
+                    HttpContext.Session.SetString("uid", (user.UserDetailId).ToString());
+                    HttpContext.Session.SetString("uname", (user.UserName).ToString());
+
                 return RedirectToAction("Index1", "Home");
 
             }
-            return View();
+
+            
         }
 
         [Route("Index")]
@@ -74,7 +85,7 @@ namespace UserProject1.Controllers
                 if (user == null)
                 {
                     ViewBag.Error = "Invalid Credentials";
-                    return RedirectToAction("Index", "Customer");
+                    return View();
                 }
                 else
                 {
@@ -153,13 +164,32 @@ namespace UserProject1.Controllers
           
 
             var c = context.Bookings.Where(x => x.UserDetailId == id).ToList();
-          
 
+
+            ViewBag.c = c;
            
-           
-            return View(c);
+            return View();
         }
-  
+        [HttpGet]
+
+        public IActionResult EditProfile()
+        {
+            int id = int.Parse(HttpContext.Session.GetString("uid"));
+            UserDetails user = context.UserDetails.Where(x => x.UserDetailId == id).SingleOrDefault();
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(UserDetails m1)
+        {
+            int id = int.Parse(HttpContext.Session.GetString("uid"));
+            UserDetails user = context.UserDetails.Where(x => x.UserDetailId == id).SingleOrDefault();
+            user.UserName = m1.UserName;
+            user.Email = m1.Email;
+            user.ContactNo = m1.ContactNo;
+            context.SaveChanges();
+            return RedirectToAction("Dashboard", "Customer");
+        }
     }
 }
 

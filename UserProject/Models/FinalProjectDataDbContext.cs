@@ -28,7 +28,7 @@ namespace UserProject.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
         {
-            optionsBuilder.UseSqlServer("Data Source=TRD-507;Initial Catalog=a1;Integrated Security=true");
+            optionsBuilder.UseSqlServer("Data Source=TRD-505;Initial Catalog=a1;Integrated Security=true");
 
         }
 
